@@ -1,0 +1,8 @@
+
+{% block body %}
+    <div class="dropdown-menu">
+    {% for image in images %}
+        <a href="{{ path('affiche', {'image': image}) }}">{{ image }}</a>
+    {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+### config/routes.yaml
+###Décription en YAML
+#client_prenom:
+#  path: /client/prenom/{prenom?}
+#  controller: App\Controller\ClientController::prenom
+#  requirements:
+#    prenom: '[A-Za-z0-9\-]+'
+#
+###page d'accueil site image
+#home:
+#  path: /img/home
+#  controller: App\Controller\ImageController::home
+#
+###télécharger l'images
+#affiche:
+#  path: /img/data/{image}
+#  controller: App\Controller\ImageController::affiche
+#
+###télécharger l'images
+#affiches:
+#  path: /img/datas/{image}
+#  controller: App\Controller\ImageController::affiches
