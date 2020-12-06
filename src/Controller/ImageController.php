@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ImageController extends AbstractController
 {
     /**
-     * @Route("/img/home", name="home")
+     * @Route("/", name="home")
      */
     public function home(): Response
     {
