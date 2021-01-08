@@ -20,3 +20,16 @@ affiche:
 affiches:
   path: /img/datas/{image}
   controller: App\Controller\ImageController::affiches
+
+##menu des images
+menu:
+  path: /img/menu
+  controller: App\Controller\ImageController::menu
+##register
+app_register:
+  path: /register
+  controller: App\Controller\RegistrationController::register
+##login
+app_login:
+  path: /login
+  controller: App\Controller\SecurityController::login

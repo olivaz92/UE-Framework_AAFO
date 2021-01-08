@@ -1,8 +1,6 @@
 
-{% block body %}
     {% for image in images %}
         <a class="dropdown-item" href="{{ path('affiche', {'image': image}) }}">
             <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> {{ image }} </font> </font>
         </a>
     {% endfor %}
-{% endblock %}

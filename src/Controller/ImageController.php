@@ -82,8 +82,22 @@ class ImageController extends AbstractController
             }
         }
         return $this->render( 'img/menu.html.twig',[
-            'images' => $images
+            'images' => $images,
         ]);
+    }
+
+    /**
+     * @Route("/change_locale/{locale}", name="change_locale")
+     * @param $locale
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function changeLocale($locale, Request $request):Response
+    {
+        // On stocke la langue dans la session
+        $request->getSession()->set('_locale', $locale);
+        // On revient sur la page précédente
+        return $this->redirect($request->headers->get('referer'));
     }
 
 }

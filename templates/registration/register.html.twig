@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+    {{ form_start(registrationForm) }}
+    <div class="signup-form col-5 mt-5" style="margin-left: auto;margin-right: auto">
+{#        {% for flashError in app.flashes('verify_email_error') %}#}
+{#            <div class="alert alert-danger" role="alert">{{ flashError }}</div>#}
+{#        {% endfor %}#}
+        <div class="form-group" align="center">
+            <h2>Sign Up</h2>
+            <p>Please fill in this form to create an account!</p>
+        </div>
+        {% for message in app.flashes('email_send') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+            <hr>
+            <div class="form-group">
+                    {{ form_errors(registrationForm.email)}}
+                <div class="input-group">
+                    <div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fa fa-paper-plane"></i>
+					</span>
+                    </div>
+                    {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
+            <div class="form-group">
+                    {{ form_errors(registrationForm.plainPassword.first)}}
+                <div class="input-group">
+                    <div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fa fa-lock"></i>
+					</span>
+                    </div>
+                    {{ form_widget(registrationForm.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_errors(registrationForm.plainPassword.second)}}
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fa fa-lock"></i>
+					</span>
+                    </div>
+                    {{ form_widget(registrationForm.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
+            <div class="form-group">
+                    <div class="input-group" style="margin-left: 20px">
+                        {{ form_row(registrationForm.agreeTerms) }}
+                        I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a>
+                    </div>
+            </div>
+            <div class="form-group" align="center">
+                <button type="submit" class="btn btn-primary btn-lg" >Enregistrer</button>
+            </div>
+
+        <div class="text-center">Already have an account? <a href="{{ path('app_login') }}">Login here</a></div>
+    </div>
+    {{ form_end(registrationForm) }}
+
+{% endblock %}
