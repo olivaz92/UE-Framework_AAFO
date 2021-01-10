@@ -20,11 +20,11 @@ class SecurityController extends AbstractController
         // }
 
         // get the login error if there is one
-        $error = $authenticationUtils->getLastAuthenticationError();
+//        $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
-        $lastUsername = $authenticationUtils->getLastUsername();
-
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+//        $lastUsername = $authenticationUtils->getLastUsername();
+        $erreur="";
+        return $this->render('security/login.html.twig', [ 'erreur' => $erreur]);
     }
 
     /**
@@ -36,7 +36,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/test_login", name="test_login",methods={"POST"})
+     * @Route("/test_login", name="test_login",methods={"POST","GET"})
      * @param Request $request
      * @return Response
      */
@@ -46,14 +46,19 @@ class SecurityController extends AbstractController
         $user_password="123456";
         $email_form= $request->request->get('email');
         $password_form= $request->request->get('password');
-        $error="";
+        $erreur="";
         if($email_form !=$user_email || $password_form!= $user_password)
         {
-            $error="erreur du mail ou du mot de passe";
-            $this->redirectToRoute('app_login',['error'=>$error]);
+            $erreur="erreur du mail ou du mot de passe";
+            return $this->render('security/login.html.twig', ['erreur' => $erreur]);
 
         }
-        $this->redirectToRoute('home');
+        if($email_form ==$user_email || $password_form== $user_password)
+        {
+           return $this->redirectToRoute('home');
+
+        }
+        return $this->render('security/login.html.twig', ['erreur' => $erreur]);
 
     }
 }
