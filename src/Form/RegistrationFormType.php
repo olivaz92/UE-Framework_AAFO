@@ -26,6 +26,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'label'=>false,
+                'required'=>true,
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
@@ -50,7 +51,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'minMessage' => 'votre mot de passe doit avoir plus de {{ limit }} caractères',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),

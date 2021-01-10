@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -10,7 +11,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/{_locale}/login", name="app_login")
+     * @Route("/login", name="app_login")
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
@@ -19,15 +20,11 @@ class SecurityController extends AbstractController
         // }
 
         // get the login error if there is one
-//        $error = $authenticationUtils->getLastAuthenticationError();
+        $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
-//        $lastUsername = $authenticationUtils->getLastUsername();
+        $lastUsername = $authenticationUtils->getLastUsername();
 
-        $form= $this->createFormBuilder()
-            ->add('email');
-
-//        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
-        return $this->render('security/login.html.twig');
+        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
     /**
@@ -39,14 +36,24 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/change_locale/{locale}", name="change_locale")
+     * @Route("/test_login", name="test_login",methods={"POST"})
+     * @param Request $request
+     * @return Response
      */
-    public function changeLocale($locale, Request $request)
+    public function testLogin(Request $request):Response
     {
-        // On stocke la langue dans la session
-        $request->getSession()->set('_locale', $locale);
+        $user_email="az@gmail.com";
+        $user_password="123456";
+        $email_form= $request->request->get('email');
+        $password_form= $request->request->get('password');
+        $error="";
+        if($email_form !=$user_email || $password_form!= $user_password)
+        {
+            $error="erreur du mail ou du mot de passe";
+            $this->redirectToRoute('app_login',['error'=>$error]);
 
-        // On revient sur la page précédente
-        return $this->redirect($request->headers->get('referer'));
+        }
+        $this->redirectToRoute('home');
+
     }
 }

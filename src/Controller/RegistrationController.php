@@ -29,29 +29,29 @@ class RegistrationController extends AbstractController
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user,array('csrf_protection' => false));
+        $form = $this->createForm(RegistrationFormType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
-            $user->setPassword(
-                $passwordEncoder->encodePassword(
-                    $user,
-                    $form->get('plainPassword')->getData()
-                )
-            );
+//            $user->setPassword(
+//                $passwordEncoder->encodePassword(
+//                    $user,
+//                    $form->get('plainPassword')->getData()
+//                )
+//            );
 //            $user->setRoles(['ROLE_USER']);
 //            $entityManager = $this->getDoctrine()->getManager();
 //            $entityManager->persist($user);
 //            $entityManager->flush();
             // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-                (new TemplatedEmail())
-                    ->from(new Address('ueframework@learning.com', 'UEFRAMEWORK'))
-                    ->to($user->getEmail())
-                    ->subject('Please Confirm your Email')
-                    ->htmlTemplate('registration/confirmation_email.html.twig')
-            );
+//            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+//                (new TemplatedEmail())
+//                    ->from(new Address('ueframework@learning.com', 'UEFRAMEWORK'))
+//                    ->to($user->getEmail())
+//                    ->subject('Please Confirm your Email')
+//                    ->htmlTemplate('registration/confirmation_email.html.twig')
+//            );
             // do anything else you need here, like send an email
             $this->addFlash('email_send',"consulter votre boite email pour confirmer votre inscription");
 
