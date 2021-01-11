@@ -16,7 +16,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Validator\Constraints\Callback;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -43,13 +42,13 @@ class RegistrationController extends AbstractController
                 'attr' => ['placeholder' => 'Votre email'],
                 'required' => true,
                 'constraints' => [
-                    new Length([
+                    new Assert\Length([
                         'min' => 0,
                         'minMessage' => "La question ne peut pas être vide.",
                         'max' => 120,
                         'maxMessage' => "La question doit faire moins de 120 caractères.",
                     ]),
-                    new Callback([
+                    new Assert\Callback([
                         // Ici $value prend la valeur du champs que l'on est en train de valider,
                         // ainsi, pour un champs de type TextType, elle sera de type string.
                         'callback' => static function (?string $value, ExecutionContextInterface $context) {

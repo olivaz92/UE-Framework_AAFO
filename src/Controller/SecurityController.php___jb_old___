@@ -52,7 +52,7 @@ class SecurityController extends AbstractController
         $erreur="";
         if($email_form !=$user_email || $password_form!= $user_password)
         {
-            $erreur=$translator->trans("Email or password error");
+            $erreur=$translator->trans("erreur du mail ou du mot de passe");
             return $this->render('security/login.html.twig', ['erreur' => $erreur]);
 
         }
