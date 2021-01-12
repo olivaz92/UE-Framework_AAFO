@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\EmailVerifier;
+use Symfony\Component\Form\FormBuilder;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -34,42 +35,19 @@ class RegistrationController extends AbstractController
 
     /**
      * @Route("/register", name="app_register")
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @param TranslatorInterface $translator
+     * @return Response
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, TranslatorInterface $translator): Response
     {
         $user = new User();
-        $form = $this->createFormBuilder()
+        $form = $this->createFormBuilder(array('csrf_protection' => false))
             ->add('email',EmailType::class,[
                 'attr' => ['placeholder' => 'Votre email'],
-                'required' => true,
-                'constraints' => [
-                    new Length([
-                        'min' => 0,
-                        'minMessage' => "La question ne peut pas être vide.",
-                        'max' => 120,
-                        'maxMessage' => "La question doit faire moins de 120 caractères.",
-                    ]),
-                    new Callback([
-                        // Ici $value prend la valeur du champs que l'on est en train de valider,
-                        // ainsi, pour un champs de type TextType, elle sera de type string.
-                        'callback' => static function (?string $value, ExecutionContextInterface $context) {
-                            if (!$value) {
-                                return;
-                            }
 
-                            if (!\preg_match('~^\p{Lu}~u', $value)) {
-                                $context
-                                    ->buildViolation('La question doit commencer par une majuscule.')
-                                    ->atPath('[question]')
-                                    ->addViolation()
-                                ;
-                            }
-                        },
-                    ]),
-                ]
             ])
-
-
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mots de passe ne correspondent pas.',
@@ -94,7 +72,9 @@ class RegistrationController extends AbstractController
                 ],
             ])
         ;
+        $form->getForm();
         $form->handleRequest($request);
+
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
@@ -143,10 +123,8 @@ class RegistrationController extends AbstractController
 
             return $this->redirectToRoute('app_register');
         }
-
-        // @TODO Change the redirect on success and handle or remove the flash message in your templates
-        $this->addFlash('success', 'Your email address has been verified.');
-
-        return $this->redirectToRoute('app_register');
     }
 }
+
+
+
