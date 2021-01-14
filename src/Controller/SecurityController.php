@@ -49,19 +49,24 @@ class SecurityController extends AbstractController
         $user_password="123456";
         $email_form= $request->request->get('email');
         $password_form= $request->request->get('password');
-        $erreur="";
-        if($email_form !=$user_email || $password_form!= $user_password)
+        if ($request->request->get('email')!=null||$request->request->get('password')!=null)
         {
-            $erreur=$translator->trans("Email or password error");
-            return $this->render('security/login.html.twig', ['erreur' => $erreur]);
+            if($email_form !=$user_email || $password_form!= $user_password)
+            {
+                $erreur=$translator->trans("Email or password error");
+                $this->addFlash('erreur_login',$erreur);
+                return $this->render('security/login.html.twig', ['erreur' => $erreur]);
 
-        }
-        if($email_form ==$user_email || $password_form== $user_password)
-        {
-           return $this->redirectToRoute('home');
+            }
+            if($email_form ==$user_email || $password_form== $user_password)
+            {
+                $this->addFlash('success_login','bienvenue Mr '.$user_email.' nous vous aimons');
+                return $this->redirectToRoute('home');
 
+            }
         }
-        return $this->render('security/login.html.twig', ['erreur' => $erreur]);
+
+        return $this->render('security/login.html.twig');
 
     }
 }

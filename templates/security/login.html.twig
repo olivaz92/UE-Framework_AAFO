@@ -32,6 +32,7 @@
 {#            <label>#}
 {#                <input type="checkbox" name="_remember_me"> Remember me#}
 {#            </label>#}
+
 {#        </div>#}
 {#    #}
 
@@ -42,10 +43,13 @@
     <form method="post" class="col-sm-4 mt-5" style="margin-right: auto;margin-left: auto" methode="test_login">
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <div align="center">
-            <p class="{% if erreur!="" %}alert-danger{% endif %}">{{ erreur }}</p>
+            {% for message in app.flashes('erreur_login') %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
         </div>
        <br>
-
         <label for="inputEmail">Email</label>
         <input type="email"  name="email" id="inputEmail" class="form-control" required autofocus>
         <label for="inputPassword">Password</label>

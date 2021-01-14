@@ -21,7 +21,6 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('email',EmailType::class,[
-                'attr' => ['placeholder' => 'Votre email'],
 
             ])
             ->add('agreeTerms', CheckboxType::class, [

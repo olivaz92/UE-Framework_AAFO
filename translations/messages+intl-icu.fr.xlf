@@ -5,7 +5,7 @@
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
-      <trans-unit id="H_McsbB" resname="Email or password error">
+      <trans-unit id="UrOK_cX" resname="Email or password error">
         <source>Email or password error</source>
         <target>__erreur du mail ou du mot de passe</target>
       </trans-unit>

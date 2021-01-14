@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Form\UserType;
 use App\Security\EmailVerifier;
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -43,36 +44,7 @@ class RegistrationController extends AbstractController
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, TranslatorInterface $translator): Response
     {
         $user = new User();
-        $form = $this->createFormBuilder(array('csrf_protection' => false))
-            ->add('email',EmailType::class,[
-                'attr' => ['placeholder' => 'Votre email'],
-
-            ])
-            ->add('plainPassword', RepeatedType::class, [
-                'type' => PasswordType::class,
-                'invalid_message' => 'Les mots de passe ne correspondent pas.',
-                'options' => ['attr' => ['class' => 'password-field']],
-                'required' => true,
-                'first_options'  => ['label' => 'Mot de passe: ',
-                    'attr' => ['placeholder' => 'Votre mot de passe',
-                    ],
-                ],
-                'second_options' => ['label' => 'confirmer mot de passe: ','attr' => ['placeholder' => 'confirme le mot de passe'],],
-                'mapped' => false,
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Please enter a password',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'votre mot de passe doit avoir plus de {{ limit }} caractères',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 4096,
-                    ]),
-                ],
-            ])
-        ;
-        $form->getForm();
+        $form = $this->createForm(UserType::class,$user);
         $form->handleRequest($request);
 
 

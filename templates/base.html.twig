@@ -102,7 +102,11 @@
             </ul>
         </div>
     </nav>
-
+    {% for message in app.flashes('success_login') %}
+        <div class="alert alert-success" align="center">
+            {{ message }}
+        </div>
+    {% endfor %}
         {% block body %}
             {% endblock %}
         {% block javascripts %}

@@ -9,10 +9,10 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Callback;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
-
+use App\Form\ExecutionContextInterface;
+use Symfony\Component\Validator\Constraints\Callback;
 class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -21,25 +21,7 @@ class UserType extends AbstractType
             ->add('email',EmailType::class,[
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Veuillez renseigner ce champs',
-                    ]),
-                    new Callback([
-                        // Ici $value prend la valeur du champs que l'on est en train de valider,
-                        // ainsi, pour un champs de type TextType, elle sera de type string.
-                        'callback' => static function (?string $value, ExecutionContextInterface $context) {
-                            if (!$value) {
-                                return;
-                            }
-
-                            if (!preg_match('/^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/ ', $value)) {
-                                $context
-                                    ->buildViolation('Email incorrecte')
-                                    ->atPath('[email]')
-                                    ->addViolation()
-                                ;
-                            }
-
-                        },
+                        'message' => 'This field is missing.',
                     ]),
                 ],
             ])
