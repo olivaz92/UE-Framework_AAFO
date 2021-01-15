@@ -17,16 +17,16 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
+         if ($this->getUser()) {
+             return $this->redirectToRoute('home');
+         }
 
-        // get the login error if there is one
-//        $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
-//        $lastUsername = $authenticationUtils->getLastUsername();
+//         get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+//         last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
         $erreur="";
-        return $this->render('security/login.html.twig', [ 'erreur' => $erreur]);
+        return $this->render('security/login.html.twig', [ 'erreur' => $erreur,'lastusername'=>$lastUsername]);
     }
 
     /**
@@ -43,30 +43,30 @@ class SecurityController extends AbstractController
      * @param TranslatableInterface $translator
      * @return Response
      */
-    public function testLogin(Request $request, TranslatorInterface $translator):Response
-    {
-        $user_email="az@gmail.com";
-        $user_password="123456";
-        $email_form= $request->request->get('email');
-        $password_form= $request->request->get('password');
-        if ($request->request->get('email')!=null||$request->request->get('password')!=null)
-        {
-            if($email_form !=$user_email || $password_form!= $user_password)
-            {
-                $erreur=$translator->trans("Email or password error");
-                $this->addFlash('erreur_login',$erreur);
-                return $this->render('security/login.html.twig', ['erreur' => $erreur]);
-
-            }
-            if($email_form ==$user_email || $password_form== $user_password)
-            {
-                $this->addFlash('success_login','bienvenue Mr '.$user_email.' nous vous aimons');
-                return $this->redirectToRoute('home');
-
-            }
-        }
-
-        return $this->render('security/login.html.twig');
-
-    }
+//    public function testLogin(Request $request, TranslatorInterface $translator):Response
+//    {
+//        $user_email="az@gmail.com";
+//        $user_password="123456";
+//        $email_form= $request->request->get('email');
+//        $password_form= $request->request->get('password');
+//        if ($request->request->get('email')!=null||$request->request->get('password')!=null)
+//        {
+//            if($email_form !=$user_email || $password_form!= $user_password)
+//            {
+//                $erreur=$translator->trans("Email or password error");
+//                $this->addFlash('erreur_login',$erreur);
+//                return $this->render('security/login.html.twig', ['erreur' => $erreur]);
+//
+//            }
+//            if($email_form ==$user_email || $password_form== $user_password)
+//            {
+//                $this->addFlash('success_login','bienvenue Mr '.$user_email.' nous vous aimons');
+//                return $this->redirectToRoute('home');
+//
+//            }
+//        }
+//
+//        return $this->render('security/login.html.twig');
+//
+//    }
 }
