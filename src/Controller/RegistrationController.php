@@ -63,7 +63,7 @@ class RegistrationController extends AbstractController
                 )
             );
             $user->setRoles(['ROLE_USER']);
-            $user->isVerified(true);
+            $user->setIsVerified(true);
             // On génère un token et on l'enregistre
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
