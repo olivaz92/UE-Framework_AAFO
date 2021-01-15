@@ -102,11 +102,20 @@
             </ul>
         </div>
     </nav>
+<!--les messages d'alertes-->
     {% for message in app.flashes('success_login') %}
         <div class="alert alert-success" align="center">
             {{ message }}
         </div>
     {% endfor %}
+
+{% for message in app.flashes('verify_email_success') %}
+        <div class="alert alert-success" align="center">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+<!--fin messages-->
         {% block body %}
             {% endblock %}
         {% block javascripts %}
