@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7a92760e-edee-405e-9a99-8ef702de4d4e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +43,7 @@
         <entry file="file://$PROJECT_DIR$/src/Form/RegistrationFormType.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
-              <caret line="29" column="35" lean-forward="true" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="35" />
+              <caret line="29" column="35" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -74,7 +73,7 @@
         <entry file="file://$PROJECT_DIR$/composer.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
-              <caret line="61" column="27" lean-forward="true" selection-start-line="61" selection-start-column="11" selection-end-line="61" selection-end-column="27" />
+              <caret line="61" column="27" selection-start-line="61" selection-start-column="11" selection-end-line="61" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -92,7 +91,7 @@
         <entry file="file://$PROJECT_DIR$/config/routes.yaml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="579">
-              <caret line="41" column="26" lean-forward="true" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
+              <caret line="41" column="9" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -100,8 +99,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-442">
-              <caret line="2" column="24" lean-forward="true" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="24" />
+            <state relative-caret-position="-204">
+              <caret line="2" column="24" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -426,18 +425,18 @@
       <workItem from="1610440598934" duration="136000" />
       <workItem from="1610544678012" duration="11000" />
       <workItem from="1610621649093" duration="8392000" />
-      <workItem from="1610668865604" duration="16318000" />
+      <workItem from="1610668865604" duration="16824000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="154845000" />
+    <option name="totallyTimeSpent" value="155351000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49865952" visible="true" weight="0.20671141" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49865952" visible="true" weight="0.20671141" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5013405" side_tool="true" weight="0.1932886" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -718,7 +717,7 @@
     <entry file="file://$PROJECT_DIR$/src/Form/RegistrationFormType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="29" column="35" lean-forward="true" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="35" />
+          <caret line="29" column="35" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -742,7 +741,7 @@
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="61" column="27" lean-forward="true" selection-start-line="61" selection-start-column="11" selection-end-line="61" selection-end-column="27" />
+          <caret line="61" column="27" selection-start-line="61" selection-start-column="11" selection-end-line="61" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -755,15 +754,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-442">
-          <caret line="2" column="24" lean-forward="true" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="24" />
+        <state relative-caret-position="-204">
+          <caret line="2" column="24" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="579">
-          <caret line="41" column="26" lean-forward="true" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
+          <caret line="41" column="9" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
         </state>
       </provider>
     </entry>

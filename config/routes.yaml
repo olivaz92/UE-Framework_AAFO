@@ -35,9 +35,9 @@ app_login:
   controller: App\Controller\SecurityController::login
 ##user_show
 user_show:
-  path:user/user_show/{id}
+  path: /user/{id}
   controller: App\Controller\UserController::show
 ##user_edit
 user_edit:
-  path:user/user_show/{id}
+  path: /user/{id}
   controller: App\Controller\UserController::edit
