@@ -33,3 +33,11 @@ app_register:
 app_login:
   path: /login
   controller: App\Controller\SecurityController::login
+##user_show
+user_show:
+  path:user/user_show/{id}
+  controller: App\Controller\UserController::show
+##user_edit
+user_edit:
+  path:user/user_show/{id}
+  controller: App\Controller\UserController::edit
